@@ -1,0 +1,20 @@
+{
+  "name": "synthesizer",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "UNLICENSED",
+  "private": true,
+  "scripts": {
+    "watch": "parcel --port=3000 ./index.html",
+    "compile": "tsc"
+  },
+  "devDependencies": {
+    "serve": "^11.3.1",
+    "ts-loader": "^7.0.5",
+    "webpack": "^4.43.0",
+    "webpack-cli": "^3.3.11"
+  },
+  "dependencies": {
+    "typescript": "^3.9.3"
+  }
+}

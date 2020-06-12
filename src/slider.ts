@@ -1,0 +1,27 @@
+import { EventBus, ControlEvent, ControlType } from "./event-bus";
+import { CHANNEL } from "./synth-component";
+
+export class Slider {
+  private label: HTMLLabelElement;
+  private input: HTMLInputElement;
+
+  public get elements() {
+    return [this.label, this.input];
+  }
+
+  constructor(bus: EventBus, path: CHANNEL, type: ControlType, name: string) {
+    this.label = <HTMLLabelElement>document.createElement("label");
+    this.input = <HTMLInputElement>document.createElement("input");
+
+    this.label.innerText = name;
+    this.input.type = "range";
+    this.input.min = "1";
+    this.input.max = "100";
+    this.input.value = "50";
+
+    this.input.oninput = (ev) =>
+      bus.fire(
+        new ControlEvent(path, type, (<HTMLInputElement>ev.target).value)
+      );
+  }
+}
